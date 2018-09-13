@@ -44,7 +44,9 @@ func NewClient(host string, httpClient *http.Client, httpHeaders map[string]stri
 
 	if os.Getenv("DOCKER_API_VERSION") == "" {
 		logp.Debug("docker", "Negotiating client version")
+		logp.Debug("docker", "Ping started")
 		ping, err := c.Ping(context.Background())
+		logp.Debug("docker", "Ping finished")
 		if err != nil {
 			logp.Debug("docker", "Failed to perform ping: %s", err)
 		}
